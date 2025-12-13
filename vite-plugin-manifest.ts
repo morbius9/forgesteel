@@ -2,13 +2,13 @@ import type { Plugin } from 'vite';
 
 // Base manifest template
 const BASE_MANIFEST = {
-	name: 'Forge Steel',
-	short_name: 'Forge Steel',
-	description: 'Heroes, monsters, encounters ... everything you need for Draw Steel.',
+	name: 'Forgesteel',
+	short_name: 'Forgesteel',
+	description: 'Forgesteel — (short description here)',
 	start_url: '/forgesteel/',
 	display: 'standalone',
-	background_color: '#ffffff',
-	theme_color: '#1890ff',
+	background_color: '#0a0a0a',
+	theme_color: '#d04b2a',
 	orientation: 'any',
 	scope: '/forgesteel/',
 	categories: [ 'games', 'entertainment', 'utilities' ],
@@ -17,23 +17,19 @@ const BASE_MANIFEST = {
 };
 
 // Generate manifest with icon paths
-export function generateManifest(shieldIconPath?: string) {
-	const iconPath = shieldIconPath || '/forgesteel/src/assets/shield.png';
-
+export function generateManifest() {
 	return {
 		...BASE_MANIFEST,
 		icons: [
 			{
-				src: iconPath,
+				src: '/forgesteel/icons/icon-192.svg',
 				sizes: '192x192',
-				type: 'image/png',
-				purpose: 'any maskable'
+				type: 'image/svg+xml'
 			},
 			{
-				src: iconPath,
+				src: '/forgesteel/icons/icon-512.svg',
 				sizes: '512x512',
-				type: 'image/png',
-				purpose: 'any maskable'
+				type: 'image/svg+xml'
 			}
 		]
 	};
@@ -42,22 +38,16 @@ export function generateManifest(shieldIconPath?: string) {
 export function manifestPlugin(): Plugin {
 	return {
 		name: 'manifest-plugin',
-		generateBundle(_, bundle) {
-			// Find the shield icon in the bundle
-			const shieldIcon = Object.keys(bundle).find(
-				key => key.includes('shield') && key.endsWith('.png')
-			);
+		generateBundle() {
+			// Generate manifest with SVG icons
+			const manifest = generateManifest();
 
-			if (shieldIcon) {
-				const manifest = generateManifest(`/forgesteel/${shieldIcon}`);
-
-				// Write the manifest to the dist folder
-				this.emitFile({
-					type: 'asset',
-					fileName: 'manifest.json',
-					source: JSON.stringify(manifest, null, 2)
-				});
-			}
+			// Write the manifest to the dist folder
+			this.emitFile({
+				type: 'asset',
+				fileName: 'manifest.json',
+				source: JSON.stringify(manifest, null, 2)
+			});
 		}
 	};
 }

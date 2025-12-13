@@ -1,59 +1,60 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" />
+    <meta charset="UTF-8" />
 
-	<!-- Icons -->
-	<link rel="icon" type="image/png" href="/forgesteel/icons/shield.png" />
-	<link rel="apple-touch-icon" href="/forgesteel/icons/shield.png" />
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/forgesteel/icons/shield.svg" />
+    <link rel="apple-touch-icon" href="/forgesteel/icons/shield.svg" />
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="mobile-web-app-capable" content="yes">
-	<meta name="robots" content="noarchive" />
-	<meta name="clacks-overhead" content="GNU Terry Pratchett" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="robots" content="noarchive" />
+    <meta name="clacks-overhead" content="GNU Terry Pratchett" />
 
-	<meta name="description" content="Heroes, monsters, encounters ... everything you need for Draw Steel." />
-	<meta property="og:description" content="Heroes, monsters, encounters ... everything you need for Draw Steel." />
-	<meta property="og:title" content="Forge Steel" />
-	<meta property="og:type" content="website" />
-	<meta property="og:image" content="/forgesteel/icons/shield.png" />
-	<meta property="og:url" content="https://andyaiken.github.io/forgesteel/" />
+    <meta name="description" content="Heroes, monsters, encounters ... everything you need for Draw Steel." />
+    <meta property="og:description" content="Heroes, monsters, encounters ... everything you need for Draw Steel." />
+    <meta property="og:title" content="Forge Steel" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/forgesteel/icons/shield.svg" />
+    <meta property="og:url" content="https://morbius9.github.io/forgesteel/" />
 
-	<meta http-equiv="Cache-Control" content="no-store, no-cache" />
-	<meta http-equiv="Pragma" content="no-cache" />
-	<meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
 
-	<!-- PWA -->
-	<link rel="manifest" href="/forgesteel/manifest.json" />
-	<meta name="theme-color" content="#1890ff" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-	<meta name="apple-mobile-web-app-title" content="Forge Steel" />
+    <!-- PWA -->
+    <link rel="manifest" href="/forgesteel/manifest.json" />
+    <meta name="theme-color" content="#1890ff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Forge Steel" />
 
-	<title>Forge Steel</title>
+    <title>Forge Steel</title>
 </head>
 
 <body>
-	<div id="root"></div>
+    <div id="root"></div>
 
-	<script>
-		function normalizeUrl(url) {
-			if (url.match(/^[^?]+(\?[^#]+)#/) != null) {
-				const match = url.match(/(^[^?]+)(\?[^#]+)(#.*)/);
-				if (match) {
-					return `${match[1]}${match[3]}${match[2]}`;
-				}
-			}
-			return url;
-		}
+    <script>
+        function normalizeUrl(url) {
+            if (url.match(/^[^?]+(\?[^#]+)#/) != null) {
+                const match = url.match(/(^[^?]+)(\?[^#]+)(#.*)/);
+                if (match) {
+                    return `${match[1]}${match[3]}${match[2]}`;
+                }
+            }
+            return url;
+        }
 
-		const url = window.location.toString();
-		const normalized = normalizeUrl(url);
-		if (normalized !== url) {
-			window.location.replace(normalized);
-		}
-	</script>
+        const url = window.location.toString();
+        const normalized = normalizeUrl(url);
+        if (normalized !== url) {
+            window.location.replace(normalized);
+        }
+    </script>
 
-	<!-- ⚠️ Vite injectera automatiquement le script JS ici en build -->
+    <!-- ⚠️ Vite will inject the built script tags during build -->
+    <script type="module" src="/src/index.tsx"></script>
 </body>
 </html>
