@@ -10,6 +10,14 @@ import './index.scss';
 
 initializeTheme();
 
+const container = document.getElementById('root');
+
+if (!container) {
+	throw new Error('Root container missing in index.html');
+}
+
+const root = createRoot(container);
+
 // Register Service Worker for PWA functionality
 if ('serviceWorker' in navigator) {
 	window.addEventListener('load', () => {
@@ -38,7 +46,6 @@ const onDataLoaded = (data: LoadedData) => {
 	);
 };
 
-const root = createRoot(document.getElementById('root')!);
 root.render(
 	<ErrorBoundary>
 		<DataLoader onComplete={onDataLoaded} />
