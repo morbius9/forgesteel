@@ -1,11 +1,12 @@
 {
 	"name": "forgesteel",
 	"private": true,
-	"version": "12.46.0",
+	"version": "12.48.0",
 	"type": "module",
 	"repository": "https://github.com/andyaiken/forgesteel.git",
 	"homepage": "https://andyaiken.github.io/forgesteel/",
 	"scripts": {
+		"dev": "vite --host",
 		"start": "vite --host",
 		"update": "npx npm-check-updates --interactive --format group",
 		"lint": "eslint \"src/**/*.{ts,tsx}\"",
@@ -13,7 +14,8 @@
 		"test": "vitest",
 		"check": "npm run lint && tsc -p tsconfig.node.json && tsc -p tsconfig.app.json && vitest run && npm audit",
 		"build": "vite build",
-		"predeploy": "npm run check && npm run build",
+		"preview": "vite preview",
+		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist"
 	},
 	"dependencies": {
@@ -23,7 +25,6 @@
 		"@types/showdown": "^2.0.6",
 		"antd": "^6.1.0",
 		"axios": "^1.13.2",
-		"gh-pages": "^6.3.0",
 		"html2canvas": "^1.4.1",
 		"jspdf": "^3.0.4",
 		"localforage": "^1.10.0",
@@ -36,13 +37,14 @@
 		"showdown": "^2.1.0"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.39.1",
+		"gh-pages": "^6.3.0",
+		"@eslint/js": "^9.39.2",
 		"@stylistic/eslint-plugin": "^5.6.1",
 		"@types/react": "^19.2.7",
 		"@types/react-dom": "^19.2.3",
 		"@vitejs/plugin-react": "^5.1.2",
 		"@vitest/coverage-v8": "^4.0.15",
-		"eslint": "^9.39.1",
+		"eslint": "^9.39.2",
 		"eslint-plugin-react-hooks": "^7.0.1",
 		"globals": "^16.5.0",
 		"typescript": "^5.9.3",
