@@ -5,7 +5,6 @@
   "start_url": "/forgesteel/",
   "scope": "/forgesteel/",
   "display": "standalone",
-
   "background_color": "#0a0a0a",
   "theme_color": "#d04b2a",
   "icons": [
