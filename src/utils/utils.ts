@@ -1,12 +1,12 @@
-import { Converter } from 'showdown';
 import { Random } from '@/utils/random';
 import { SheetPageSize } from '@/enums/sheet-page-size';
 import { domToImage } from 'modern-screenshot';
 import html2canvas from 'html2canvas';
 import jspdf from 'jspdf';
+import showdown from 'showdown';
 
 export class Utils {
-	static showdownConverter = new Converter({ simpleLineBreaks: true, tables: true });
+	static showdownConverter = new showdown.Converter({ simpleLineBreaks: true, tables: true });
 
 	static isDev = () => {
 		return window.location.hostname === 'localhost';
