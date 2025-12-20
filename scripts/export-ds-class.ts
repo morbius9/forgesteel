@@ -15,6 +15,12 @@ async function main() {
 		process.exit(1);
 	}
 	
+	// Validate className to prevent path traversal
+	if (!/^[a-z0-9-]+$/.test(className)) {
+		console.error('Error: Invalid class name. Only lowercase letters, numbers, and hyphens are allowed.');
+		process.exit(1);
+	}
+	
 	try {
 		// Dynamically import the class data using relative path
 		const classPath = path.join(__dirname, '..', 'src', 'data', 'classes', className, `${className}.ts`);
